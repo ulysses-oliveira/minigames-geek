@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #5cb0ff;
+}
+
+.navbar {
+    background-color: rgb(101, 101, 254);
+}
+
+.my-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px); /* Ajusta a altura considerando o header */
+    padding-top: 5px;
+    background-color: #5cb0ff;
+}
+
+h1 {
+    font-size: 2vw;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.secret-word {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.secret-word ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.secret-word li {
+    font-size: 2vw;
+    letter-spacing: 10px;
+    padding: 0 5px;
+}
+
+.my-keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 1px 0;
+}
+
+.btn {
+    background-color: #2a2f35bc;
+    border: 0px;
+    padding: 1vw;
+    margin: 1px;
+    font-size: 1vw;
+    border-radius: 3px;
+    cursor: pointer;
+    flex: 1;
+    max-width: 9vw;
+}
+
+.btn:hover {
+    background-color: #1b1846;
+}
+
+.btn:active {
+    background-color: #999;
+}
+
+/* Ajustes para telas menores */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 3vw;
+    }
+    .btn {
+        padding: 1.2vw;
+        font-size: 2vw;
+    }
+    .secret-word li {
+        font-size: 3vw;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 4vw;
+    }
+    .btn {
+        padding: 1.5vw;
+        font-size: 2.5vw;
+    }
+    .secret-word li {
+        font-size: 4vw;
+    }
+}
