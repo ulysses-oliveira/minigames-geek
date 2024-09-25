@@ -101,11 +101,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // Função para atualizar a forca
   const atualizarGallows = () => {
     const parts = gallowsElement.querySelectorAll("path");
-    if (tentativas < parts.length) {
-      parts[parts.length - tentativas - 1].style.display = "block";
+    // Exibe a parte correta com base no número de tentativas restantes
+    const partToShow = parts.length - tentativas;
+    if (partToShow >= 0 && partToShow < parts.length) {
+      parts[partToShow].style.display = "block";
     }
   };
+
 });
