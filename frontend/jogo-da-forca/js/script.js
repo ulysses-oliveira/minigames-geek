@@ -61,9 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Função para desativar um botão e adicionar a classe "incorreto" se a letra estiver errada
   const desativarBotao = (botao, letraCorreta) => {
     botao.disabled = true; // Desativando o botão
-    if (!letraCorreta) {
-      botao.style.backgroundColor = "red"; // Muda a cor de fundo para vermelho
-      botao.style.color = "white"; // Muda a cor do texto para branco
+    if (letraCorreta) {
+      botao.style.backgroundColor = "#0c2dd1";
+      botao.style.color = "white";
     }
     botao.classList.add("disabled");
   };
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       } else {
         tentativas--;
-        atualizarGallows();
+        //atualizarGallows();
         verificarDerrota();
       }
 
@@ -100,9 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-
   const atualizarGallows = () => {
-    const parts = gallowsElement.querySelectorAll("path");
+    const parts = gallowsElement.querySelectorAll("");
     // Exibe a parte correta com base no número de tentativas restantes
     const partToShow = parts.length - tentativas;
     if (partToShow >= 0 && partToShow < parts.length) {

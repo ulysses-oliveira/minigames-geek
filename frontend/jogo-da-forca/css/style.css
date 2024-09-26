@@ -78,7 +78,7 @@ h1 {
     background-color: #1b1846;
 }
 
-.btn:active {
+.btn:disabled {
     background-color: #999;
 }
 
