@@ -1,29 +1,42 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Palavras e dicas do jogo
-  const palavras = [
-    { palavra: "Demon Slayer", dica: "Anime" },
-    { palavra: "Pequeno Principe", dica: "Livro" },
-    { palavra: "Game of Thrones", dica: "Série" },
-    { palavra: "Anabelle", dica: "Filme" },
-  ];
-  const palavraSelecionada = palavras[Math.floor(Math.random() * palavras.length)];
+
+  const temas = {
+    'Anime': ["Demon Slayer"],
+    'Séries': ["Game of Thrones"],
+    'Livros': ["Pequeno Principe", "As Crônicas de Gelo e Fogo"],
+    'Filmes': ["Anabelle"],
+  };
+
+  let palavra;
+
+  // Alterado para querySelectorAll para selecionar todos os links
+  document.querySelectorAll('#tema-escolhido .nav-link').forEach(link => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault(); // Impede o comportamento padrão do link
+      const tema = event.target.getAttribute('data-tema'); // Obtém o tema clicado
+
+      const palavraSelecionada = temas[tema][Math.floor(Math.random() * temas[tema].length)];
+      palavra = palavraSelecionada.toUpperCase();
+      
+      console.log(palavra); // Verifica se a palavra foi selecionada corretamente
+      iniciarJogo()
+    });
+  });
 
   // Variáveis do jogo
-  let palavra = palavraSelecionada.palavra.toUpperCase(); // Convertendo para maiúsculas
-  let dica = palavraSelecionada.dica;
   let tentativas = 6;
-  let palavraOculta = palavra.split("").map(char => (char === " " ? " " : "_"));
+  let palavraOculta;
+
+  // Função para atualizar a palavra oculta e começar o jogo após a escolha do tema
+  function iniciarJogo() {
+    palavraOculta = palavra.split("").map(char => (char === " " ? " " : "_"));
+    const wordElement = document.getElementById("palavra-oculta");
+    wordElement.innerHTML = palavraOculta.join("&nbsp;");
+  }
 
   // Elementos HTML
-  const clueElement = document.querySelector("h3");
-  const wordElement = document.getElementById("palavra-oculta");
   const buttons = document.querySelectorAll(".btn-secondary");
-  const gallowsElement = document.querySelector("svg");
   const messageElement = document.querySelector(".message");
-
-  // Atualizar a dica e a palavra oculta no início do jogo
-  clueElement.textContent = dica;
-  wordElement.innerHTML = palavraOculta.join("&nbsp;");
 
   // Função para atualizar a palavra oculta
   function atualizarPalavraOculta(letra) {
@@ -35,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+    const wordElement = document.getElementById("palavra-oculta");
     wordElement.innerHTML = palavraOculta.join("&nbsp;");
 
     return algumaLetraEncontrada;
@@ -68,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
     botao.classList.add("disabled");
   };
 
-
   // Função para desativar todos os botões após o jogo acabar
   const desativarTodosOsBotoes = () => {
     buttons.forEach((botao) => {
@@ -85,17 +98,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (letraCorreta) {
         atualizarPalavraOculta(letra);
-        // Aguarda a renderização da atualização do DOM antes de verificar a vitória
         requestAnimationFrame(() => {
           verificarVitoria();
         });
       } else {
         tentativas--;
-        //atualizarGallows();
         verificarDerrota();
       }
 
-      // Desativar o botão e mudar a cor se a letra estiver errada
       desativarBotao(event.target, letraCorreta);
     });
   });

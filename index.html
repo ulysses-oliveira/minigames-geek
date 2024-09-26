@@ -58,17 +58,28 @@
       </header>
     </div>
 
-    <div class="my-container mt-3" id="forca">
-      <h1>Jogo da Forca</h1>
-      <h3></h3>
-<div class="secret-word container">
-  <span id="palavra-oculta">_ _ _ _</span> <!-- Use um span para a palavra oculta -->
-</div>
+    <div class="my-container no-margin" id="forca">
+      <nav class="navbar navbar-expand-md bg-light">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="mb-0">Jogo da Forca</h1>
+            <div class="navbar-nav d-flex flex-row flex-nowrap" id="tema-escolhido">
+                <a class="nav-link small px-2" href="#" data-tema="Anime">Anime</a>
+                <a class="nav-link small px-2" href="#" data-tema="Séries">Séries</a>
+                <a class="nav-link small px-2" href="#" data-tema="Livros">Livros</a>
+                <a class="nav-link small px-2" href="#" data-tema="Filmes">Filmes</a>
+            </div>
+        </div>
+    </nav>
+    
+    
+    
+
+      <div class="secret-word container">
+        <span id="palavra-oculta">_ _ _ _</span>
+      </div>
 
       <div class="my-keyboard text-center">
-        <div class="message">
-
-        </div>
+        <div class="message"></div>
         <div class="row">
           <button type="button" class="btn btn-secondary">Q</button>
           <button type="button" class="btn btn-secondary">W</button>
