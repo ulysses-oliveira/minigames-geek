@@ -113,6 +113,9 @@
           <button type="button" id="key-N" class="btn btn-secondary">N</button>
           <button type="button" id="key-M" class="btn btn-secondary">M</button>
         </div>
+        <div class="text-center mt-3">
+          <button id="nova-palavra" class="btn btn-primary">Nova Palavra</button>
+        </div>
       </div>
     </div>
 
@@ -122,19 +125,5 @@
       crossorigin="anonymous"
     ></script>
     <script src="frontend/jogo-da-forca/js/script.js"></script>
-
-    <script>
-      document.addEventListener("keydown", function(params) {
-        const key = event.key.toUpperCase()
-
-        const button = document.getElementById(`key-${key}`)
-
-        if (button) {
-          button.click()
-        }
-      })
-
-      const buttons = document
-    </script>
   </body>
 </html>
