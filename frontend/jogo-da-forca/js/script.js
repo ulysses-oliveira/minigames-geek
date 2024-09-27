@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const palavraSelecionada = temas[tema][Math.floor(Math.random() * temas[tema].length)];
       palavra = palavraSelecionada.toUpperCase();
       
-      console.log(palavra); // Verifica se a palavra foi selecionada corretamente
       iniciarJogo()
     });
   });
@@ -89,6 +88,17 @@ document.addEventListener("DOMContentLoaded", () => {
       botao.classList.add("disabled");
     });
   };
+
+  document.addEventListener("keydown", function(event) {
+    const key = event.key.toUpperCase(); // Captura a tecla pressionada em maiúscula
+
+    // Mapeia o evento ao botão correspondente no teclado virtual
+    const button = document.getElementById(`key-${key}`);
+    
+    if (button) {
+      button.click(); // Simula um clique no botão correspondente
+    }
+  });
 
   // Adicionar evento de clique para os botões das letras
   buttons.forEach((botao) => {

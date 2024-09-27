@@ -81,36 +81,37 @@
       <div class="my-keyboard text-center">
         <div class="message"></div>
         <div class="row">
-          <button type="button" class="btn btn-secondary">Q</button>
-          <button type="button" class="btn btn-secondary">W</button>
-          <button type="button" class="btn btn-secondary">E</button>
-          <button type="button" class="btn btn-secondary">R</button>
-          <button type="button" class="btn btn-secondary">T</button>
-          <button type="button" class="btn btn-secondary">Y</button>
-          <button type="button" class="btn btn-secondary">U</button>
-          <button type="button" class="btn btn-secondary">I</button>
-          <button type="button" class="btn btn-secondary">O</button>
-          <button type="button" class="btn btn-secondary">P</button>
+          <button type="button" id="key-Q" class="btn btn-secondary">Q</button>
+          <button type="button" id="key-W" class="btn btn-secondary">W</button>
+          <button type="button" id="key-E" class="btn btn-secondary">E</button>
+          <button type="button" id="key-R" class="btn btn-secondary">R</button>
+          <button type="button" id="key-T" class="btn btn-secondary">T</button>
+          <button type="button" id="key-Y" class="btn btn-secondary">Y</button>
+          <button type="button" id="key-U" class="btn btn-secondary">U</button>
+          <button type="button" id="key-I" class="btn btn-secondary">I</button>
+          <button type="button" id="key-O" class="btn btn-secondary">O</button>
+          <button type="button" id="key-P" class="btn btn-secondary">P</button>
         </div>
         <div class="row">
-          <button type="button" class="btn btn-secondary">A</button>
-          <button type="button" class="btn btn-secondary">S</button>
-          <button type="button" class="btn btn-secondary">D</button>
-          <button type="button" class="btn btn-secondary">F</button>
-          <button type="button" class="btn btn-secondary">G</button>
-          <button type="button" class="btn btn-secondary">H</button>
-          <button type="button" class="btn btn-secondary">J</button>
-          <button type="button" class="btn btn-secondary">K</button>
-          <button type="button" class="btn btn-secondary">L</button>
+          <button type="button" id="key-A" class="btn btn-secondary">A</button>
+          <button type="button" id="key-S" class="btn btn-secondary">S</button>
+          <button type="button" id="key-D" class="btn btn-secondary">D</button>
+          <button type="button" id="key-F" class="btn btn-secondary">F</button>
+          <button type="button" id="key-G" class="btn btn-secondary">G</button>
+          <button type="button" id="key-H" class="btn btn-secondary">H</button>
+          <button type="button" id="key-J" class="btn btn-secondary">J</button>
+          <button type="button" id="key-K" class="btn btn-secondary">K</button>
+          <button type="button" id="key-L" class="btn btn-secondary">L</button>
+          <button type="button" id="key-Ç" class="btn btn-secondary">Ç</button>
         </div>
         <div class="row">
-          <button type="button" class="btn btn-secondary">Z</button>
-          <button type="button" class="btn btn-secondary">X</button>
-          <button type="button" class="btn btn-secondary">C</button>
-          <button type="button" class="btn btn-secondary">V</button>
-          <button type="button" class="btn btn-secondary">B</button>
-          <button type="button" class="btn btn-secondary">N</button>
-          <button type="button" class="btn btn-secondary">M</button>
+          <button type="button" id="key-Z" class="btn btn-secondary">Z</button>
+          <button type="button" id="key-X" class="btn btn-secondary">X</button>
+          <button type="button" id="key-C" class="btn btn-secondary">C</button>
+          <button type="button" id="key-V" class="btn btn-secondary">V</button>
+          <button type="button" id="key-B" class="btn btn-secondary">B</button>
+          <button type="button" id="key-N" class="btn btn-secondary">N</button>
+          <button type="button" id="key-M" class="btn btn-secondary">M</button>
         </div>
       </div>
     </div>
@@ -121,5 +122,19 @@
       crossorigin="anonymous"
     ></script>
     <script src="frontend/jogo-da-forca/js/script.js"></script>
+
+    <script>
+      document.addEventListener("keydown", function(params) {
+        const key = event.key.toUpperCase()
+
+        const button = document.getElementById(`key-${key}`)
+
+        if (button) {
+          button.click()
+        }
+      })
+
+      const buttons = document
+    </script>
   </body>
 </html>
