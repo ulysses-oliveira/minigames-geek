@@ -15,8 +15,6 @@ body, html {
     background-color: #5c67fe;
 }
 
-
-
 .my-container {
     flex-direction: column;
     justify-content: center;
@@ -38,7 +36,7 @@ h1 {
 }
 
 #tema-escolhido .nav-link {
-    font-size: 2vw; /* Ajuste esse valor conforme necessário */
+    font-size: 3vw; /* Ajuste esse valor conforme necessário */
 }
 
 .navbar-nav .nav-link {
