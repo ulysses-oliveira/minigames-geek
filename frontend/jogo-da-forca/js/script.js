@@ -1,13 +1,40 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const temas = {
-    'Anime': ["Demon Slayer"],
-    'Séries': ["Game of Thrones"],
-    'Livros': ["Pequeno Principe", "As Crônicas de Gelo e Fogo"],
-    'Filmes': ["Anabelle"],
+    'Anime': ["Demon Slayer", "Jujutsu Kaizen", "One Punch Man", "Chainsaw Man" ],
+    'Séries': ["Game of Thrones", "Invicible", "Arqueiro", "Ahsoka"],
+    'Livros': ["Pequeno Principe", "Dom Casmurro"],
+    'Filmes': ["Anabelle", "Divertida Mente", "Homem Aranha"],
   };
-
+  
+  // Variáveis do jogo
+  let tentativas = 6;
+  let palavraOculta;
   let palavra;
+
+  // Função para atualizar a palavra oculta e começar o jogo após a escolha do tema
+  function iniciarJogo(palavraEscolhida, temaSelecionado) {
+    palavraOculta = palavraEscolhida.split("").map(char => (char === " " ? " " : "_"));
+    const wordElement = document.getElementById("palavra-oculta");
+    wordElement.innerHTML = palavraOculta.join("&nbsp;");
+    
+    // Atualiza o link visualmente para destacar o tema selecionado
+    document.querySelectorAll('#tema-escolhido .nav-link').forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('data-tema') === temaSelecionado) {
+        link.classList.add('active');
+      }
+    });
+
+    reiniciarTeclado()
+  }
+  
+  function selecionarTemaPadrao() {
+    const temaPadrao = localStorage.getItem('temaSelecionado') || 'Filme';
+    const palavraSelecionada = gerarNovaPalavra(temaPadrao)
+    
+    iniciarJogo(palavraSelecionada, temaPadrao)
+  }
 
   // Alterado para querySelectorAll para selecionar todos os links
   document.querySelectorAll('#tema-escolhido .nav-link').forEach(link => {
@@ -15,22 +42,17 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault(); // Impede o comportamento padrão do link
       const tema = event.target.getAttribute('data-tema'); // Obtém o tema clicado
 
-      const palavraSelecionada = temas[tema][Math.floor(Math.random() * temas[tema].length)];
-      palavra = palavraSelecionada.toUpperCase();
-      
-      iniciarJogo()
+      // Armazena o tema selecionado no localStorage
+      localStorage.setItem('temaSelecionado', tema)
+      // Gera uma nova palavra
+      const novaPalavra = gerarNovaPalavra(tema)
+      iniciarJogo(novaPalavra, tema)
     });
   });
 
-  // Variáveis do jogo
-  let tentativas = 6;
-  let palavraOculta;
-
-  // Função para atualizar a palavra oculta e começar o jogo após a escolha do tema
-  function iniciarJogo() {
-    palavraOculta = palavra.split("").map(char => (char === " " ? " " : "_"));
-    const wordElement = document.getElementById("palavra-oculta");
-    wordElement.innerHTML = palavraOculta.join("&nbsp;");
+  function gerarNovaPalavra(tema) {
+    palavra = temas[tema][Math.floor(Math.random() * temas[tema].length)].toUpperCase();
+    return palavra
   }
 
   // Elementos HTML
@@ -71,7 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Função para desativar um botão e adicionar a classe "incorreto" se a letra estiver errada
   const desativarBotao = (botao, letraCorreta) => {
     botao.disabled = true; // Desativando o botão
     if (letraCorreta) {
@@ -88,6 +109,18 @@ document.addEventListener("DOMContentLoaded", () => {
       botao.classList.add("disabled");
     });
   };
+
+  const reiniciarTeclado = () => {
+    buttons.forEach((botao) => {
+      botao.disabled = false;
+      botao.classList.remove("disabled")
+
+      botao.style.backgroundColor = ""
+      botao.style.Color = ""
+
+      tentativas = 6;
+    })
+  }
 
   document.addEventListener("keydown", function(event) {
     const key = event.key.toUpperCase(); // Captura a tecla pressionada em maiúscula
@@ -120,6 +153,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  document.querySelector("#nova-palavra").addEventListener("click", () => {
+    selecionarTemaPadrao()
+  })
+
   const atualizarGallows = () => {
     const parts = gallowsElement.querySelectorAll("");
     // Exibe a parte correta com base no número de tentativas restantes
@@ -129,4 +166,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  window.onload = selecionarTemaPadrao;
 });
