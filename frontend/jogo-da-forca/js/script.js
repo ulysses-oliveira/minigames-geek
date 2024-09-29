@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    reiniciarTeclado()
+    gameReset()
   }
   
   function selecionarTemaPadrao() {
@@ -110,13 +110,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  const reiniciarTeclado = () => {
+  const gameReset = () => {
     buttons.forEach((botao) => {
       botao.disabled = false;
       botao.classList.remove("disabled")
 
       botao.style.backgroundColor = ""
       botao.style.Color = ""
+      messageElement.textContent = ""
 
       tentativas = 6;
     })
