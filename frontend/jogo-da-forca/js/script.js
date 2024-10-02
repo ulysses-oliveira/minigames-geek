@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  fetch('/index.html')
+    .then(response => response.text())
+    .then(data => {
+        document.querySelector('#header').innerHTML = data;
+    });
+
   const temas = {
     'Anime': ["Demon Slayer", "Jujutsu Kaizen", "One Punch Man", "Chainsaw Man" ],
     'Séries': ["Game of Thrones", "Invicible", "Arqueiro", "Ahsoka"],
