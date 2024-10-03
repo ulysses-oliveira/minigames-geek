@@ -1,13 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  fetch('/index.html')
-    .then(response => response.text())
-    .then(data => {
-        document.querySelector('#header').innerHTML = data;
-    });
+  fetch("../index.html")
+        .then((response) => response.text())
+        .then((html) => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, "text/html");
+
+          // Seleciona apenas o conteúdo do header
+          const headerContent = doc.querySelector("header").innerHTML;
+
+          document.getElementById("header").innerHTML = headerContent;
+        })
+        .catch((error) => {
+          console.error("Erro ao carregar o HTML:", error);
+        });
+
+
+
 
   const temas = {
-    'Anime': ["Demon Slayer", "Jujutsu Kaizen", "One Punch Man", "Chainsaw Man" ],
+    'Animes': ["Demon Slayer", "Jujutsu Kaizen", "One Punch Man", "Chainsaw Man" ],
     'Séries': ["Game of Thrones", "Invicible", "Arqueiro", "Ahsoka"],
     'Livros': ["Pequeno Principe", "Dom Casmurro"],
     'Filmes': ["Anabelle", "Divertida Mente", "Homem Aranha"],
@@ -36,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   function selecionarTemaPadrao() {
-    const temaPadrao = localStorage.getItem('temaSelecionado') || 'Filme';
+    const temaPadrao = localStorage.getItem('temaSelecionado') || 'Filmes';
     const palavraSelecionada = gerarNovaPalavra(temaPadrao)
     
     iniciarJogo(palavraSelecionada, temaPadrao)
