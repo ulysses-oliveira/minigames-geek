@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100% !important;
+  font-family: Arial, sans-serif !important;
+  background-color: #192b4e !important;
+}
+
+.navbar {
+  background-color: #5c67fe;
+}

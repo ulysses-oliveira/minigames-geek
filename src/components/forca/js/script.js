@@ -1,23 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  fetch("../index.html")
-        .then((response) => response.text())
-        .then((html) => {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(html, "text/html");
-
-          // Seleciona apenas o conteúdo do header
-          const headerContent = doc.querySelector("header").innerHTML;
-
-          document.getElementById("header").innerHTML = headerContent;
-        })
-        .catch((error) => {
-          console.error("Erro ao carregar o HTML:", error);
-        });
-
-
-
-
   const temas = {
     'Animes': ["Demon Slayer", "Jujutsu Kaizen", "One Punch Man", "Chainsaw Man" ],
     'Séries': ["Game of Thrones", "Invicible", "Arqueiro", "Ahsoka"],

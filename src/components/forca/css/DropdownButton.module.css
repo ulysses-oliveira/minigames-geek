@@ -1,0 +1,19 @@
+/* Forca.module.css */
+
+.themeButton {
+    background-color: transparent; /* Pode ser transparente ou outra cor */
+    color: #333;
+    border: none; /* Remove a borda padrão */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+  }
+  
+  .themeButton:hover {
+    background-color: #0c2dd1; /* Cor de fundo ao passar o mouse */
+    color: white; /* Cor do texto ao passar o mouse */
+  }
+  
+  .active {
+    font-weight: bold; /* Destaca o botão ativo */
+    color: #0c2dd1; /* Cor do texto ativo */
+  }
+  
