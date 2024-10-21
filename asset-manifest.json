@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/minigames-geek/static/css/main.a8279356.css",
+    "main.js": "/minigames-geek/static/js/main.6bd53ae0.js",
+    "static/js/453.0a36081d.chunk.js": "/minigames-geek/static/js/453.0a36081d.chunk.js",
+    "index.html": "/minigames-geek/index.html",
+    "main.a8279356.css.map": "/minigames-geek/static/css/main.a8279356.css.map",
+    "main.6bd53ae0.js.map": "/minigames-geek/static/js/main.6bd53ae0.js.map",
+    "453.0a36081d.chunk.js.map": "/minigames-geek/static/js/453.0a36081d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a8279356.css",
+    "static/js/main.6bd53ae0.js"
+  ]
+}
